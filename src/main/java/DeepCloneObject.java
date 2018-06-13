@@ -5,5 +5,8 @@ import java.io.Serializable;
  */
 public class DeepCloneObject implements Serializable{
 
+    public static final String VERSION_ID = "@(#)$Name$ $Id$";
+
+
 
 }
