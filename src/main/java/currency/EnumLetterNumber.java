@@ -1,3 +1,5 @@
+package currency;
+
 /**
  * Created by Administrator on 6/13/2018.
  */
