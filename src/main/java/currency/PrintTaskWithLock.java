@@ -1,5 +1,9 @@
 package currency;
 
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -14,7 +18,6 @@ public class PrintTaskWithLock implements Callable{
     private StateForPrint stateForPrint;
     private String letter;
     private Integer num;
-    private Lock lock = new ReentrantLock();
 
     public PrintTaskWithLock(String letter, StateForPrint stateForPrint) {
         this.stateForPrint = stateForPrint;
@@ -25,22 +28,9 @@ public class PrintTaskWithLock implements Callable{
 
     public Object call() throws Exception {
 
-        int i = 0;
+        this.stateForPrint.print(letter,num);
 
-        while (i < 20) {
-            lock.lock();
-            try {
-                if (stateForPrint.getState() % 3 == num) {
-                    System.out.print(letter);
-                    stateForPrint.setState(stateForPrint.getState() + 1);
-                    i++;
-                }
-            } finally {
-                lock.unlock();
-            }
-        }
-
-        return null;
+        return true;
     }
 
     public static void main(String[] args) {
@@ -54,7 +44,6 @@ public class PrintTaskWithLock implements Callable{
         executorService.submit(taskA);
         executorService.submit(taskB);
         executorService.submit(taskC);
-
 
         executorService.shutdown();
     }
