@@ -1,4 +1,4 @@
-package currency;
+package concurrent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +23,9 @@ public class PrintTaskWithAtomic implements Callable{
 
     public Object call() throws Exception {
 
-        int i = 0;
-
         stateForPrint.print(letter,num);
+
+
 
         return null;
     }

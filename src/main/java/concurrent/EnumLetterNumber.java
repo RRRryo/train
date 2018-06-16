@@ -1,4 +1,4 @@
-package currency;
+package concurrent;
 
 /**
  * Created by Administrator on 6/13/2018.

@@ -1,4 +1,4 @@
-package currency;
+package concurrent;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
