@@ -11,6 +11,8 @@ public enum Singleton {
         //init method here
         System.out.println("init method");
 
+
+
     }
 
     public void job1() {
@@ -21,7 +23,11 @@ public enum Singleton {
         return resource;
     }
 
+    public void setResource(Object resource) {
+        this.resource = resource;
+    }
+
     public static void main(String[] args) {
-        Singleton.INSTANCE.job1();
+        Singleton.INSTANCE.getResource();
     }
 }

@@ -44,6 +44,11 @@ public class PrintTask implements Callable {
         StateForPrint stateForPrint = new StateForPrint();
         Callable taskA = new PrintTask("A",stateForPrint);
         Callable taskB = new PrintTask("B",stateForPrint);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Callable taskC = new PrintTask("C",stateForPrint);
 
         ExecutorService executorService = Executors.newFixedThreadPool(3);
